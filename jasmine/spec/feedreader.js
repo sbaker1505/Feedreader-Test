@@ -36,7 +36,7 @@ $(function() {
             expect(element.url).toBeDefined();
             expect(element.url.length).not.toBe(0);
             expect(element.url.slice(0, 7) === 'http://').toBe(true);
-          })
+          });
         });
 
         /* TODO: Write a test that loops through each feed
@@ -47,7 +47,7 @@ $(function() {
           allFeeds.forEach(function(element) {
            expect(element.name).toBeDefined();
            expect(element.name.length).not.toBe(0);
-          })
+         });
         });
     });
 
