@@ -61,7 +61,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function() {
-          expect($('.menu-hidden div').hasClass('slide-menu')).toBe(true);
+          expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -93,9 +93,8 @@ $(function() {
            loadFeed(0, done);
          });
 
-         it('feed container has entry', function(done){
+         it('feed container has entry', function(){
            expect($('.feed .entry').length).toBeGreaterThan(0);
-           done();
          });
     });
 
@@ -106,13 +105,23 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-
+         let initFeed, newFeed;
          beforeEach(function(done){
-           loadFeed(1, done);
+           loadFeed(0, function(){
+             initFeed = document.querySelector('.header-title').innerHTML
+             done()
+           });
          });
 
+         loadFeed(1, function(){
+           newFeed = document.querySelector('.header-title').innerHTML
+           done()
+         })
+
          it('content changes when new feed is loaded', function (done) {
-           expect($('.header .header-title').html()).toBe('CSS Tricks');
+           expect(initFeed).toBe('Udacity Blog');
+           expect(newFeed).toBe('CSS Tricks');
+           expect(initFeed === newFeed).not.toBe(true);
            done();
          });
     });
