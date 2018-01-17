@@ -108,15 +108,15 @@ $(function() {
          let initFeed, newFeed;
          beforeEach(function(done){
            loadFeed(0, function(){
-             initFeed = document.querySelector('.header-title').innerHTML
-             done()
+             initFeed = document.querySelector('.header-title').innerHTML;
+             done();
            });
          });
 
          loadFeed(1, function(){
-           newFeed = document.querySelector('.header-title').innerHTML
-           done()
-         })
+           newFeed = document.querySelector('.header-title').innerHTML;
+           done();
+         });
 
          it('content changes when new feed is loaded', function (done) {
            expect(initFeed).toBe('Udacity Blog');
