@@ -109,19 +109,20 @@ $(function() {
          beforeEach(function(done){
            loadFeed(0, function(){
              initFeed = document.querySelector('.header-title').innerHTML;
-             done();
+
+             loadFeed(1, function(){
+               newFeed = document.querySelector('.header-title').innerHTML;
+               done();
+             });
            });
          });
 
-         loadFeed(1, function(){
-           newFeed = document.querySelector('.header-title').innerHTML;
-           done();
-         });
+
 
          it('content changes when new feed is loaded', function (done) {
            expect(initFeed).toBe('Udacity Blog');
            expect(newFeed).toBe('CSS Tricks');
-           expect(initFeed === newFeed).not.toBe(true);
+           expect(initFeed).not.toBe(newFeed);
            done();
          });
     });
